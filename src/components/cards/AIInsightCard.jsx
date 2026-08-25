@@ -1,8 +1,18 @@
 import React from 'react';
+import { useHealthData } from '../../context/HealthDataContext';
 import { BrainCircuit, CheckCircle2, ChevronRight, ShieldAlert } from 'lucide-react';
 
 export const AIInsightCard = ({ anomaly, onViewDetails }) => {
+  const { openDiagnosticStory } = useHealthData();
   if (!anomaly) return null;
+
+  const handleStoryClick = () => {
+    if (onViewDetails) {
+      onViewDetails(anomaly);
+    } else {
+      openDiagnosticStory(anomaly);
+    }
+  };
 
   const isUrgent = anomaly.severity === 'Urgent';
   const isAttention = anomaly.severity === 'Attention';
@@ -73,7 +83,7 @@ export const AIInsightCard = ({ anomaly, onViewDetails }) => {
       )}
 
       <button
-        onClick={onViewDetails}
+        onClick={handleStoryClick}
         className="btn btn-purple"
         style={{ width: '100%', fontSize: '0.8rem', padding: '0.55rem 1rem' }}
       >

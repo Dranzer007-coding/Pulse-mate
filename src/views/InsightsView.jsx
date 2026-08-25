@@ -5,7 +5,7 @@ import { RiskMatrixCard } from '../components/cards/RiskMatrixCard';
 import { BrainCircuit, MessageSquare, AlertCircle, ChevronRight, HelpCircle, Bot } from 'lucide-react';
 
 export const InsightsView = () => {
-  const { anomalies } = useHealthData();
+  const { anomalies, openDiagnosticStory } = useHealthData();
   const [selectedQuestion, setSelectedQuestion] = useState(null);
 
   const coachQuestions = [
@@ -44,7 +44,7 @@ export const InsightsView = () => {
           </div>
 
           {anomalies.map((anom) => (
-            <AIInsightCard key={anom.id} anomaly={anom} onViewDetails={() => setSelectedQuestion(0)} />
+            <AIInsightCard key={anom.id} anomaly={anom} onViewDetails={(a) => openDiagnosticStory(a)} />
           ))}
         </div>
 

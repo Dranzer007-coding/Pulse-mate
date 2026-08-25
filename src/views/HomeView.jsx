@@ -7,7 +7,7 @@ import { BodyAnatomyMap } from '../components/visuals/BodyAnatomyMap';
 import { PlusCircle, Sun, Flame } from 'lucide-react';
 
 export const HomeView = () => {
-  const { userData, vitals, anomalies, environmentData, setIsManualLogOpen, setActiveTab } = useHealthData();
+  const { userData, vitals, anomalies, environmentData, setIsManualLogOpen, setActiveTab, openDiagnosticStory } = useHealthData();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -110,7 +110,7 @@ export const HomeView = () => {
             </button>
           </div>
           {anomalies.length > 0 ? (
-            <AIInsightCard anomaly={anomalies[0]} onViewDetails={() => setActiveTab('insights')} />
+            <AIInsightCard anomaly={anomalies[0]} onViewDetails={(anom) => openDiagnosticStory(anom)} />
           ) : (
             <div className="glass-card" style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-sub)' }}>
               No critical health anomalies detected today.

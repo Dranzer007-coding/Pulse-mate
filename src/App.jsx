@@ -23,6 +23,7 @@ import { FallDetectionModal } from './components/modals/FallDetectionModal';
 import { EmergencySOSModal } from './components/modals/EmergencySOSModal';
 import { HealthReportModal } from './components/modals/HealthReportModal';
 import { NotificationCenterModal } from './components/modals/NotificationCenterModal';
+import { AIDiagnosticStoryModal } from './components/modals/AIDiagnosticStoryModal';
 
 const AppContent = () => {
   const { activeTab, userData } = useHealthData();
@@ -183,6 +184,7 @@ const AppContent = () => {
       <EmergencySOSModal />
       <HealthReportModal />
       <NotificationCenterModal />
+      <AIDiagnosticStoryModal />
     </div>
   );
 };

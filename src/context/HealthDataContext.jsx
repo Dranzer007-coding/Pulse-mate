@@ -40,6 +40,13 @@ export const HealthDataProvider = ({ children }) => {
   const [isSosModalOpen, setIsSosModalOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [isNotificationCenterOpen, setIsNotificationCenterOpen] = useState(false);
+  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
+  const [selectedAnomalyForStory, setSelectedAnomalyForStory] = useState(null);
+
+  const openDiagnosticStory = (anomaly) => {
+    setSelectedAnomalyForStory(anomaly);
+    setIsStoryModalOpen(true);
+  };
 
   // Dynamic AI evaluation on vital or environmental state change
   useEffect(() => {
@@ -259,6 +266,11 @@ export const HealthDataProvider = ({ children }) => {
         setIsReportModalOpen,
         isNotificationCenterOpen,
         setIsNotificationCenterOpen,
+        isStoryModalOpen,
+        setIsStoryModalOpen,
+        selectedAnomalyForStory,
+        setSelectedAnomalyForStory,
+        openDiagnosticStory,
         addManualVital,
         toggleMedication,
         addHydration,
