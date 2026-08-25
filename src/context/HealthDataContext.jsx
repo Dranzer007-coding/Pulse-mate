@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import {
   initialUserData,
   initialVitals,
@@ -13,6 +13,7 @@ import {
   initialClinics,
   initialTimeline
 } from '../data/mockData';
+import { detectAnomalies, calculateRiskMatrixAndScore } from '../ai/engine';
 
 const HealthDataContext = createContext();
 
@@ -39,6 +40,22 @@ export const HealthDataProvider = ({ children }) => {
   const [isSosModalOpen, setIsSosModalOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [isNotificationCenterOpen, setIsNotificationCenterOpen] = useState(false);
+
+  // Dynamic AI evaluation on vital or environmental state change
+  useEffect(() => {
+    const aiAnomalies = detectAnomalies(vitals, environmentData, userData, hydration);
+    const { riskMatrix: computedRisk, healthScore, healthScoreStatus } = calculateRiskMatrixAndScore(
+      vitals, environmentData, hydration, sleepData
+    );
+
+    setAnomalies(aiAnomalies);
+    setRiskMatrix(computedRisk);
+    setUserData(prev => ({
+      ...prev,
+      healthScore,
+      healthScoreStatus
+    }));
+  }, [vitals.heartRate.current, vitals.temperature.current, vitals.spo2.current, environmentData.temperature, environmentData.aqi, hydration.currentMl]);
 
   // Quick state update helper
   const addManualVital = (type, value) => {
