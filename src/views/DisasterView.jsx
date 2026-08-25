@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHealthData } from '../context/HealthDataContext';
-import { CloudLightning, Sun, Wind, MapPin, ShieldAlert, Thermometer, ShieldCheck, PhoneCall, RefreshCw } from 'lucide-react';
+import { CloudLightning, MapPin, ShieldCheck } from 'lucide-react';
 
 export const DisasterView = () => {
   const { environmentData, triggerHeatWaveAlert, offlineMode } = useHealthData();

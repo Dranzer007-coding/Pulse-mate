@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHealthData } from '../../context/HealthDataContext';
-import { WifiOff, Cpu, ShieldCheck } from 'lucide-react';
+import { WifiOff, Cpu } from 'lucide-react';
 
 export const OfflineBanner = () => {
   const { offlineMode } = useHealthData();

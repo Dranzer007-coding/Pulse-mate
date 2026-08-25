@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHealthData } from '../context/HealthDataContext';
-import { Pill, Droplet, Moon, Footprints, Flame, CheckCircle, Plus, Sparkles } from 'lucide-react';
+import { Pill, Droplet, Moon, Footprints, CheckCircle, Plus, Sparkles } from 'lucide-react';
 
 export const LifestyleView = () => {
   const { medications, toggleMedication, hydration, addHydration, activityData, sleepData } = useHealthData();

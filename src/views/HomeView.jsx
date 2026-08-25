@@ -4,7 +4,7 @@ import { HealthScoreCard } from '../components/cards/HealthScoreCard';
 import { VitalCard } from '../components/cards/VitalCard';
 import { AIInsightCard } from '../components/cards/AIInsightCard';
 import { BodyAnatomyMap } from '../components/visuals/BodyAnatomyMap';
-import { PlusCircle, Activity, Sun, ShieldAlert, Heart, Flame } from 'lucide-react';
+import { PlusCircle, Sun, Flame } from 'lucide-react';
 
 export const HomeView = () => {
   const { userData, vitals, anomalies, environmentData, setIsManualLogOpen, setActiveTab } = useHealthData();

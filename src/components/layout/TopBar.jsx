@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHealthData } from '../../context/HealthDataContext';
-import { Activity, Bell, Wifi, WifiOff, Watch, ShieldAlert, Sliders } from 'lucide-react';
+import { Activity, Bell, Wifi, WifiOff, Watch, ShieldAlert } from 'lucide-react';
 
 export const TopBar = () => {
   const {

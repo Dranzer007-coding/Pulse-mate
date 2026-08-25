@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHealthData } from '../context/HealthDataContext';
-import { User, Shield, Users, Lock, HardDrive, CheckCircle2, ChevronRight, Share2, Bell } from 'lucide-react';
+import { Lock, Users } from 'lucide-react';
 
 export const ProfileView = () => {
   const { userData } = useHealthData();

@@ -1,0 +1,1300 @@
+PULSE MATE — COMPLETE FRONTEND UI/UX SPECIFICATION
+Version: 1.0
+Purpose: Frontend implementation blueprint for the Pulse Mate health companion platform.
+
+============================================================
+1. PRODUCT VISION
+============================================================
+
+Pulse Mate is a mobile-first personal health companion that connects wearable/device data with a health intelligence app. It continuously organizes health, activity, environmental and wellness signals into understandable insights, early warnings, recommendations and emergency support.
+
+The frontend should feel like a premium health-tech product: modern, trustworthy, slightly futuristic, visually rich, but never like a medical hospital dashboard.
+
+Primary visual references:
+- Premium smartwatch + health dashboard applications
+- Dark purple/blue/teal health cards
+- Soft gradients and subtle glow
+- Rounded cards
+- Clean charts
+- Large readable numbers
+- Strong visual hierarchy
+- Minimal clutter
+- Mobile-first PWA
+- Accessibility-friendly typography and contrast
+
+Important product principle:
+Pulse Mate should NOT present AI predictions as confirmed medical diagnoses. Use language such as:
+"Potential risk detected", "Pattern worth checking", "Consider consulting a doctor", and "Emergency assistance recommended".
+
+============================================================
+2. GLOBAL APP STRUCTURE
+============================================================
+
+Main bottom navigation:
+
+1. Home
+2. Health
+3. Insights
+4. Emergency
+5. Profile
+
+Optional floating action button:
+- Quick SOS
+- Add health reading
+- Connect device
+
+Top bar:
+- Pulse Mate logo
+- User avatar
+- Connection/device status
+- Notification bell
+- Optional privacy/offline indicator
+
+Global states:
+- Online
+- Offline
+- Wearable connected
+- Wearable disconnected
+- Syncing
+- Last synced X minutes ago
+- Data unavailable
+- Sensor permission required
+
+============================================================
+3. DESIGN SYSTEM
+============================================================
+
+Color direction:
+- Primary: electric blue / cyan
+- Secondary: deep purple
+- Accent: teal/green for healthy states
+- Warning: amber/orange
+- Critical: red
+- Background: near-black / deep navy
+- Cards: dark navy/purple with subtle elevation
+- Light mode may use white/off-white cards with blue/purple accents
+
+Typography:
+- Large bold numbers for vitals
+- Medium-weight section titles
+- Small muted metadata
+- Avoid excessive uppercase text
+
+Cards:
+- Border radius: 18–26px
+- Subtle shadow/glow
+- Internal spacing: generous
+- Icons inside circular colored containers
+
+Charts:
+- Line charts for trends
+- Bar charts for daily activity
+- Circular progress rings for scores
+- Heatmaps for time-based patterns
+- Sparkline charts inside health cards
+
+Health status indicators:
+Green = Stable
+Yellow = Monitor
+Orange = Attention
+Red = Urgent
+
+Use icons consistently for:
+Heart, lungs, thermometer, droplet, footsteps, moon, battery, shield, warning, ambulance, medicine, location, doctor, cloud/weather, air quality.
+
+============================================================
+4. HOME / HEALTH OVERVIEW
+============================================================
+
+Hero section:
+"Good morning, [Name]"
+Subtitle:
+"Here's how your body is doing today."
+
+Main Health Score card:
+- Overall Health Score: 82/100
+- Status: Stable
+- Small explanation
+- Trend compared with previous week
+- "View full assessment"
+
+Vital cards:
+- Heart Rate
+- SpO2
+- Temperature
+- Blood Pressure
+- Blood Glucose
+- Respiratory indicators where available
+
+Each card:
+- Current reading
+- Normal/risk state
+- Mini trend graph
+- Last updated time
+- Expand button
+
+Daily activity:
+- Steps
+- Calories
+- Active minutes
+- Distance
+- Activity goal progress
+
+Recovery:
+- Sleep score
+- Recovery score
+- HRV where available
+- Resting heart rate
+
+AI summary:
+"Your recovery is slightly lower than usual. Consider an earlier bedtime and hydration today."
+
+============================================================
+5. FEATURE 1 — CONTINUOUS HEALTH MONITORING
+============================================================
+
+Health screen contains a grid/list of supported measurements.
+
+Metrics:
+- Heart rate
+- SpO2
+- Body temperature
+- Blood pressure
+- Blood glucose
+- Respiratory rate where available
+- Activity
+- Sleep
+- HRV
+- Stress indicators
+- Calories
+
+UI:
+Each metric opens a detailed screen containing:
+- Current value
+- Safe/reference range
+- 24-hour chart
+- 7-day chart
+- 30-day trend
+- Personal baseline
+- Abnormal readings
+- AI interpretation
+
+For unavailable sensors:
+"Your connected device does not currently provide this measurement."
+Provide alternatives:
+- Manual entry
+- Compatible device
+- Bluetooth medical device
+
+============================================================
+6. FEATURE 2 — PERSONAL BASELINE
+============================================================
+
+Instead of relying only on generic ranges, Pulse Mate learns a user's normal patterns.
+
+UI:
+"Your Baseline"
+- Resting HR baseline
+- Typical sleep duration
+- Typical temperature
+- Typical activity
+- Typical SpO2
+
+Show:
+"Your heart rate is 14% above your usual resting range."
+
+Include:
+- Baseline graph
+- Baseline confidence
+- Number of days used to establish baseline
+
+============================================================
+7. FEATURE 3 — AI ANOMALY DETECTION
+============================================================
+
+Insights page contains:
+"AI Health Watch"
+
+Cards:
+- Detected change
+- Severity
+- Confidence
+- Supporting signals
+- Recommended action
+
+Example:
+"Unusual pattern detected"
+"Your heart rate remained elevated while your activity was low."
+
+Buttons:
+- View details
+- Monitor
+- Contact doctor
+
+Avoid claiming diagnosis.
+
+============================================================
+8. FEATURE 4 — HEAT STRESS & DEHYDRATION
+============================================================
+
+Dedicated environmental health card:
+"Heat Risk"
+
+Inputs:
+- Temperature
+- Humidity
+- Activity
+- Heart rate
+- User profile
+- Exposure duration
+
+Risk display:
+LOW / MODERATE / HIGH / EXTREME
+
+Recommendations:
+- Hydrate
+- Take shade/rest
+- Reduce outdoor activity
+- Cool down
+- Seek medical help if severe symptoms occur
+
+Use a heat gauge and environmental background.
+
+============================================================
+9. FEATURE 5 — AIR QUALITY & RESPIRATORY RISK
+============================================================
+
+Air Quality card:
+- AQI
+- PM2.5
+- PM10 where available
+- Temperature
+- Humidity
+
+AI risk:
+"Respiratory risk: Moderate"
+
+Recommendations:
+- Avoid prolonged outdoor exposure
+- Consider mask
+- Keep indoor air clean
+- Monitor symptoms
+
+Map view:
+- Current location
+- AQI color zones
+- Nearby safer areas
+
+============================================================
+10. FEATURE 6 — DISASTER HEALTH MODE
+============================================================
+
+Create a prominent "Emergency Environment" mode.
+
+Supported scenarios:
+- Heat wave
+- Flood
+- Cyclone
+- Severe air pollution
+- Extreme weather
+- Disease/outbreak advisories
+
+UI:
+Large status banner:
+"HEATWAVE ALERT — HIGH RISK"
+
+Show:
+- Environmental risk
+- Personal vulnerability
+- Recommended action
+- Nearby safe location
+- Emergency contacts
+- Offline guidance
+
+The app should cache critical guidance for offline use.
+
+============================================================
+11. FEATURE 7 — PERSONALIZED RISK ENGINE
+============================================================
+
+Risk dashboard:
+- Cardiovascular risk indicator
+- Heat stress risk
+- Respiratory risk
+- Dehydration risk
+- Fatigue risk
+- Fall risk
+- Sleep/recovery risk
+
+Do NOT display speculative diseases as confirmed diagnoses.
+
+Each risk:
+- Risk level
+- Trend
+- Main contributing factors
+- Suggested action
+
+============================================================
+12. FEATURE 8 — ACTIVITY & FITNESS TRACKER
+============================================================
+
+Fitness screen:
+- Steps
+- Calories
+- Distance
+- Active minutes
+- Workout sessions
+- Weekly goals
+- Streaks
+
+Visual:
+Large circular daily goal
+"7,842 / 10,000 steps"
+
+Weekly bar chart.
+
+Achievements:
+- 7-day streak
+- 10K steps
+- Active week
+- Recovery champion
+
+============================================================
+13. FEATURE 9 — SLEEP & RECOVERY
+============================================================
+
+Sleep dashboard:
+- Sleep duration
+- Deep sleep
+- Light sleep
+- Awake time
+- Sleep consistency
+- Sleep score
+
+Recovery dashboard:
+- HRV
+- Resting HR
+- Activity load
+- Sleep quality
+
+AI recommendation:
+"Your recovery is lower than your weekly average. Consider reducing high-intensity activity today."
+
+============================================================
+14. FEATURE 10 — FALL DETECTION
+============================================================
+
+If device supports movement/accelerometer data:
+
+Fall event screen:
+"Possible fall detected"
+
+Countdown:
+"Are you okay?"
+
+Buttons:
+- I'm okay
+- Call emergency contact
+- SOS
+
+If no response:
+- Trigger emergency workflow
+- Share location only if user has granted permission
+
+============================================================
+15. FEATURE 11 — SOS & EMERGENCY ASSISTANCE
+============================================================
+
+Emergency screen should be extremely simple.
+
+Large red SOS button.
+
+Long press to activate.
+
+Emergency actions:
+- Call emergency service
+- Call primary contact
+- Send location
+- Send selected health summary
+- Nearby hospital/clinic
+- Emergency guidance
+
+During emergency:
+Show:
+- Current location
+- Battery
+- Device connectivity
+- Last known vitals
+- Emergency contact status
+
+Offline fallback:
+Queue SMS/notification where supported by the device/network.
+
+============================================================
+16. FEATURE 12 — MEDICINE REMINDERS
+============================================================
+
+Medication screen:
+- Medicine name
+- Dose
+- Time
+- Frequency
+- Before/after food
+- Prescribed duration
+
+Reminder card:
+"Time for your medicine"
+
+Actions:
+- Taken
+- Snooze
+- Skip
+
+History:
+- Adherence percentage
+- Missed doses
+- Weekly chart
+
+Do not automatically prescribe medication.
+
+============================================================
+17. FEATURE 13 — HYDRATION REMINDERS
+============================================================
+
+Hydration tracker:
+- Daily target
+- Current intake
+- Progress ring
+- Smart reminders
+
+AI adjusts reminders based on:
+- Weather
+- Activity
+- Heat exposure
+- User preferences
+
+Example:
+"You've been active for 50 minutes in high heat. Consider drinking water."
+
+============================================================
+18. FEATURE 14 — AI HEALTH COACH
+============================================================
+
+AI Coach is not designed as a generic chatbot.
+
+Instead, use guided insight cards.
+
+Sections:
+- Today
+- Why this matters
+- What you can do
+- When to seek help
+
+Example:
+"Your resting heart rate has been higher than usual for 3 days."
+
+Actions:
+- Monitor today
+- Improve sleep
+- Hydrate
+- Consult professional
+
+Optional chat interface can be secondary.
+
+============================================================
+19. FEATURE 15 — DOCTOR / CLINIC DISCOVERY
+============================================================
+
+Nearby healthcare screen:
+- Map
+- Clinics
+- Hospitals
+- Pharmacies
+- Specialists
+
+Filters:
+- Open now
+- Distance
+- Specialty
+- Rating
+- Emergency
+- Teleconsultation
+
+Clinic card:
+- Name
+- Distance
+- Open/closed
+- Specialty
+- Call
+- Directions
+- Consultation
+
+============================================================
+20. FEATURE 16 — HEALTH REPORT
+============================================================
+
+Generate a shareable health report.
+
+Report contains:
+- User profile
+- Vital trends
+- Activity
+- Sleep
+- Abnormal patterns
+- AI insights
+- Medication adherence
+- Environmental exposure
+- Questions to discuss with doctor
+
+Export:
+- PDF
+- Secure share
+- QR code / temporary access
+
+User chooses exactly what is shared.
+
+============================================================
+21. FEATURE 17 — FAMILY / CAREGIVER MODE
+============================================================
+
+Optional trusted contacts.
+
+Caregiver dashboard:
+- Health status
+- Last sync
+- Alerts
+- Medication adherence
+- Emergency events
+
+Privacy:
+User controls which data caregivers can see.
+
+============================================================
+22. FEATURE 18 — ENVIRONMENT + LOCATION INTELLIGENCE
+============================================================
+
+Environmental dashboard:
+- Temperature
+- Humidity
+- AQI
+- UV
+- Weather risk
+- Disaster alerts
+
+Personalized card:
+"Your current environment has a high heat-risk score."
+
+Map:
+- Current position
+- Risk zones
+- Hospitals
+- Safe areas
+
+Location sharing must always be permission-based.
+
+============================================================
+23. FEATURE 19 — OFFLINE-FIRST / EDGE-AI EXPERIENCE
+============================================================
+
+Connectivity indicator:
+"Offline mode"
+
+App should continue displaying:
+- Cached health data
+- Recent readings
+- Emergency guidance
+- Saved contacts
+- Last known location
+
+When connection returns:
+"Syncing securely..."
+
+Show:
+- Data synced
+- Pending data
+- Sync errors
+
+AI processing should be presented as:
+"Processed on device" where applicable.
+
+============================================================
+24. FEATURE 20 — DEVICE & WEARABLE HUB
+============================================================
+
+Device page:
+"Connected Devices"
+
+Cards:
+- Smartwatch
+- Fitness band
+- Bluetooth BP monitor
+- Glucose device
+- Pulse oximeter
+- Temperature sensor
+
+Device status:
+Connected / Syncing / Offline
+
+Actions:
+- Connect
+- Disconnect
+- Sync now
+- Permissions
+- Supported metrics
+
+For generic consumer watches:
+Clearly distinguish supported readings from unsupported ones.
+
+============================================================
+25. FEATURE 21 — MANUAL HEALTH LOGGING
+============================================================
+
+Allow manual input when a wearable cannot provide a metric.
+
+Examples:
+- BP
+- Blood glucose
+- Temperature
+- Weight
+- Symptoms
+- Medication
+- Water intake
+
+Fast entry:
+"+ Add reading"
+
+Use large numeric input controls.
+
+============================================================
+26. FEATURE 22 — PERSONAL HEALTH TIMELINE
+============================================================
+
+Timeline screen:
+"Your Health Journey"
+
+Events:
+- Abnormal reading
+- Medication taken
+- Workout
+- Sleep
+- Doctor consultation
+- SOS
+- Environmental exposure
+
+Filter:
+- All
+- Vitals
+- Activity
+- Medication
+- Alerts
+- Medical
+
+============================================================
+27. FEATURE 23 — SMART GOALS & GAMIFICATION
+============================================================
+
+Goals:
+- Steps
+- Sleep
+- Hydration
+- Activity
+- Recovery
+- Medication adherence
+
+Gamification:
+- XP
+- Streaks
+- Badges
+- Weekly challenges
+- Personal milestones
+
+Keep gamification subtle and health-focused.
+
+============================================================
+28. FEATURE 24 — PRIVACY & HEALTH DATA CONTROL
+============================================================
+
+Privacy center:
+"Your health data belongs to you."
+
+Controls:
+- Device permissions
+- Location
+- Health data
+- Caregiver access
+- Emergency sharing
+- Cloud sync
+- Delete data
+- Export data
+
+Security indicators:
+- Local processing
+- Encrypted storage
+- Secure transmission
+- Permission status
+
+Use simple language instead of legal jargon.
+
+============================================================
+29. FEATURE 25 — AI HEALTH INSIGHT / EARLY WARNING CENTER
+============================================================
+
+This is the flagship screen.
+
+Title:
+"Health Intelligence"
+
+Top:
+Overall health status
+
+Cards:
+1. What changed?
+2. Why it matters
+3. What may be contributing
+4. What to do now
+5. When to seek help
+
+Example:
+
+"Recovery pattern changed"
+
+Your sleep decreased by 18% and resting heart rate is 9% above baseline.
+
+Recommended:
+"Prioritize rest and hydration today."
+
+CTA:
+"Monitor"
+"View details"
+"Consult healthcare professional"
+
+============================================================
+30. PROFILE
+============================================================
+
+Profile sections:
+- Personal information
+- Health profile
+- Emergency contacts
+- Medical conditions (optional user-entered)
+- Allergies
+- Medication
+- Devices
+- Goals
+- Privacy
+- Notifications
+- Accessibility
+- About Pulse Mate
+
+Profile header:
+Avatar
+Name
+Health score
+Device status
+
+============================================================
+31. NOTIFICATION CENTER
+============================================================
+
+Notification types:
+- Health alert
+- Device alert
+- Medication reminder
+- Hydration reminder
+- Disaster alert
+- Appointment reminder
+- Sync status
+
+Priority levels:
+Normal
+Important
+Urgent
+
+Urgent notifications should visually dominate.
+
+============================================================
+32. ONBOARDING
+============================================================
+
+Screen 1:
+Pulse Mate logo
+"Understand your health. Act before the emergency."
+
+Screen 2:
+Connect wearable
+
+Screen 3:
+Select health goals
+
+Screen 4:
+Add emergency contacts
+
+Screen 5:
+Choose privacy preferences
+
+Screen 6:
+Enable optional permissions
+
+Screen 7:
+"Your health companion is ready."
+
+Do not request every permission at once without explanation.
+
+============================================================
+33. DASHBOARD LAYOUT
+============================================================
+
+Recommended Home order:
+
+Top:
+Greeting + connection status
+
+Hero:
+Overall Health Score
+
+Row:
+Heart Rate | SpO2 | Temperature
+
+Card:
+AI Health Insight
+
+Row:
+Steps | Sleep | Recovery
+
+Card:
+Environment Risk
+
+Card:
+Medication / Hydration
+
+Card:
+Weekly trends
+
+Bottom:
+Quick Actions
+
+============================================================
+34. HEALTH DETAIL PAGE
+============================================================
+
+Header:
+Metric name + status
+
+Main:
+Current reading
+
+Chart tabs:
+24H | 7D | 30D | 6M
+
+Below:
+Personal baseline
+Normal range
+AI observation
+Factors
+History
+
+CTA:
+"Add manual reading"
+"Share report"
+
+============================================================
+35. AI INSIGHT DETAIL PAGE
+============================================================
+
+Use a storytelling layout:
+
+1. Detected
+2. Evidence
+3. Possible factors
+4. Risk level
+5. Recommended action
+6. When to seek professional help
+
+Avoid scary medical language.
+
+============================================================
+36. EMERGENCY UI
+============================================================
+
+Emergency mode should switch to high-contrast UI.
+
+Top:
+"EMERGENCY MODE"
+
+Large:
+SOS ACTIVE
+
+Status:
+- Location sharing
+- Contact notified
+- Emergency service status
+
+Buttons:
+Call
+Share location
+Cancel
+
+Keep the number of choices low.
+
+============================================================
+37. DEVICE CONNECTION UX
+============================================================
+
+Flow:
+
+Devices
+→ Add Device
+→ Scan
+→ Select device
+→ Pair
+→ Permission
+→ Supported metrics
+→ Initial sync
+→ Connected
+
+After connection:
+"ASW-47 connected"
+
+Supported:
+Heart rate ✓
+Steps ✓
+Sleep ✓
+
+Unsupported:
+Blood pressure —
+Blood glucose —
+SpO2 —
+
+Never fake unsupported data.
+
+============================================================
+38. FRONTEND COMPONENT LIBRARY
+============================================================
+
+Reusable components:
+
+- AppShell
+- BottomNav
+- TopBar
+- HealthScoreCard
+- VitalCard
+- TrendCard
+- RiskCard
+- AIInsightCard
+- EnvironmentCard
+- DeviceCard
+- MedicationCard
+- HydrationCard
+- SleepCard
+- ActivityCard
+- EmergencyCard
+- SOSButton
+- TimelineItem
+- ChartCard
+- StatChip
+- StatusBadge
+- Modal
+- BottomSheet
+- Toast
+- PermissionDialog
+- EmptyState
+- OfflineBanner
+- SyncIndicator
+- MapCard
+- ClinicCard
+- DoctorCard
+- ReportCard
+- ProfileSection
+
+============================================================
+39. RESPONSIVE DESIGN
+============================================================
+
+Primary target:
+Mobile 360–430px width.
+
+Tablet:
+Use two-column cards.
+
+Desktop:
+Use a dashboard layout with:
+- Left navigation
+- Main content
+- Optional right-side insights panel
+
+PWA:
+- Installable
+- Offline shell
+- Push notifications where supported
+- Responsive
+- Fast loading
+
+============================================================
+40. RECOMMENDED FRONTEND TECH STACK
+============================================================
+
+Core:
+- React
+- Vite
+- TypeScript or JavaScript
+
+Styling:
+- Tailwind CSS or modular CSS
+- Framer Motion for subtle animations
+
+Charts:
+- Recharts
+or
+- Chart.js
+
+Icons:
+- Lucide React
+
+Maps:
+- Mapbox or Google Maps depending on project requirements
+
+PWA:
+- Vite PWA plugin
+- Service Worker
+- IndexedDB/local storage for offline data
+
+Device communication:
+- Android Bluetooth APIs / native bridge where needed
+- Web Bluetooth only where browser/device compatibility permits
+
+Health platform integrations:
+- Android Health Connect should be preferred where supported
+- Other vendor APIs/SDKs where available
+
+Backend:
+- Node.js
+- Express
+- PostgreSQL / Supabase
+
+Authentication:
+- Firebase Auth or Supabase Auth
+
+Notifications:
+- Firebase Cloud Messaging
+
+AI:
+- On-device model where feasible
+- TensorFlow Lite / LiteRT or ONNX Runtime Mobile
+- Cloud AI only for non-sensitive/optional workloads
+
+============================================================
+41. FRONTEND DATA FLOW
+============================================================
+
+Wearable / sensor
+      ↓
+Device connection layer
+      ↓
+Health data normalization
+      ↓
+Local cache
+      ↓
+On-device analytics
+      ↓
+Risk / insight engine
+      ↓
+UI dashboard
+      ↓
+Optional secure cloud sync
+      ↓
+Doctor / caregiver / emergency sharing
+
+The frontend should not directly assume that every wearable provides every metric.
+
+============================================================
+42. DEMO DATA MODE
+============================================================
+
+For hackathon demonstration, include a Demo Mode.
+
+Demo Mode:
+- Simulated wearable
+- Realistic time-series data
+- Triggerable heat event
+- Triggerable abnormal heart rate
+- Triggerable fall
+- Triggerable high AQI
+- Medication reminder
+- SOS simulation
+
+This lets judges see the complete workflow without requiring expensive hardware.
+
+Clearly label simulated readings as:
+"Demo / Simulated Data"
+
+============================================================
+43. ANIMATION GUIDELINES
+============================================================
+
+Use animation for:
+- Health score loading
+- Chart transitions
+- Device connection
+- Sync progress
+- Risk changes
+- SOS activation
+
+Avoid:
+- Excessive bouncing
+- Long animations
+- Distracting backgrounds
+
+Micro-interactions should communicate system state.
+
+============================================================
+44. KEY USER JOURNEYS
+============================================================
+
+Journey A — Normal day:
+Open app
+→ Health score
+→ Check vitals
+→ AI insight
+→ Activity
+→ Hydration
+→ Sleep
+
+Journey B — Heatwave:
+Environmental alert
+→ Personal heat risk
+→ Hydration recommendation
+→ Rest warning
+→ Monitor vitals
+→ Emergency escalation if risk increases
+
+Journey C — Abnormal vital:
+Abnormal pattern
+→ AI insight
+→ Supporting evidence
+→ Recommendation
+→ Doctor discovery
+→ Health report
+
+Journey D — Fall:
+Fall detected
+→ Countdown
+→ User response
+→ SOS if needed
+→ Location
+→ Emergency contact
+
+Journey E — Offline:
+Network lost
+→ Offline banner
+→ Continue cached health data
+→ Local insights
+→ Emergency guidance
+→ Secure sync when online
+
+============================================================
+45. PREMIUM UI DETAILS
+============================================================
+
+Use:
+- Gradient health rings
+- Subtle glowing metric icons
+- Glass cards
+- Animated ECG line
+- Smooth chart transitions
+- Personalized greeting
+- Context-aware recommendations
+- Risk color coding
+- Large readable metrics
+
+Avoid:
+- Overcrowded dashboards
+- Fake medical precision
+- Fake sensor values
+- Too many charts on one screen
+- Generic chatbot-first interface
+
+============================================================
+46. CORE DIFFERENTIATOR
+============================================================
+
+Pulse Mate should visually communicate one major concept:
+
+"Don't just show health data. Understand the change, explain the risk, and guide the next action."
+
+The product experience should move users through:
+
+DATA
+→ UNDERSTANDING
+→ EARLY WARNING
+→ ACTION
+→ PROFESSIONAL HELP
+→ EMERGENCY SUPPORT
+
+============================================================
+47. FRONTEND IMPLEMENTATION PRIORITY
+============================================================
+
+Phase 1 — Must-have:
+- Onboarding
+- Home dashboard
+- Health metrics
+- Device hub
+- Manual data
+- Charts
+- AI insights
+- Risk cards
+- Emergency/SOS
+- Profile
+
+Phase 2:
+- Environment
+- Disaster mode
+- Medication
+- Hydration
+- Sleep
+- Activity
+- Health reports
+- Doctor discovery
+
+Phase 3:
+- Caregiver
+- Advanced AI
+- Offline intelligence
+- Gamification
+- Full device ecosystem
+- Advanced analytics
+
+============================================================
+48. FINAL UI PRINCIPLE
+============================================================
+
+The application should look like a product that could realistically be demonstrated to:
+- Hackathon judges
+- Healthcare partners
+- Wearable manufacturers
+- Government/public-health programs
+- Everyday consumers
+
+It must feel:
+TRUSTWORTHY + INTELLIGENT + FAST + PERSONAL + EMERGENCY-READY
+
+The interface should never overwhelm the user with medical data.
+
+The home screen answers:
+"How am I doing?"
+
+The insight screen answers:
+"What changed?"
+
+The AI screen answers:
+"Why might it matter?"
+
+The action screen answers:
+"What should I do?"
+
+The emergency screen answers:
+"How do I get help now?"
+
+============================================================
+END OF PULSE MATE FRONTEND SPECIFICATION
+============================================================

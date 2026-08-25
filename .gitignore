@@ -31,3 +31,13 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Node & Vite Web Build
+node_modules/
+dist/
+.DS_Store
+*.local
+.env
+.env.local
+.env.*.local
+

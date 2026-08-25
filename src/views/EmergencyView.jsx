@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHealthData } from '../context/HealthDataContext';
-import { ShieldAlert, AlertOctagon, PhoneCall, MapPin, Heart, UserCheck, FileText } from 'lucide-react';
+import { ShieldAlert, AlertOctagon, FileText } from 'lucide-react';
 
 export const EmergencyView = () => {
   const { setIsSosModalOpen, triggerFallEvent, userData, vitals } = useHealthData();

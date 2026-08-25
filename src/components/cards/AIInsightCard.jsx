@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrainCircuit, AlertTriangle, CheckCircle2, ChevronRight, ShieldAlert } from 'lucide-react';
+import { BrainCircuit, CheckCircle2, ChevronRight, ShieldAlert } from 'lucide-react';
 
 export const AIInsightCard = ({ anomaly, onViewDetails }) => {
   if (!anomaly) return null;

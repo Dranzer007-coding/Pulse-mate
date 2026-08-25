@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHealthData } from '../../context/HealthDataContext';
-import { X, FileText, Download, Share2, QrCode, CheckCircle2 } from 'lucide-react';
+import { X, FileText, Download, QrCode } from 'lucide-react';
 
 export const HealthReportModal = () => {
   const { isReportModalOpen, setIsReportModalOpen, userData, vitals, anomalies, medications } = useHealthData();
