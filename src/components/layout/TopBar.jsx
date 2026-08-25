@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHealthData } from '../../context/HealthDataContext';
-import { Activity, Bell, Wifi, WifiOff, Watch, ShieldAlert } from 'lucide-react';
+import { Activity, Bell, Wifi, WifiOff, Watch, ShieldAlert, Menu } from 'lucide-react';
 
-export const TopBar = () => {
+export const TopBar = ({ onOpenMenu }) => {
   const {
     userData,
     offlineMode,
@@ -30,7 +30,27 @@ export const TopBar = () => {
       justifyContent: 'space-between'
     }}>
       {/* Brand & Connected Device */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        {/* Menu Button */}
+        <button
+          onClick={onOpenMenu}
+          style={{
+            background: 'rgba(0, 242, 254, 0.1)',
+            border: '1px solid rgba(0, 242, 254, 0.25)',
+            borderRadius: '10px',
+            width: '34px',
+            height: '34px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#00f2fe',
+            cursor: 'pointer'
+          }}
+          title="Open Navigation Sidebar"
+        >
+          <Menu size={18} />
+        </button>
+
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
           <div style={{
             width: '38px',

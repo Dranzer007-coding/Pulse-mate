@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HealthDataProvider, useHealthData } from './context/HealthDataContext';
 import { TopBar } from './components/layout/TopBar';
 import { BottomNav } from './components/layout/BottomNav';
+import { SidebarNav } from './components/layout/SidebarNav';
 import { OfflineBanner } from './components/layout/OfflineBanner';
 import { DemoToolbar } from './components/layout/DemoToolbar';
 import { Smartphone, Monitor, Wifi, Battery, Sparkles } from 'lucide-react';
@@ -27,6 +28,7 @@ const AppContent = () => {
   const { activeTab, userData } = useHealthData();
   const [viewMode, setViewMode] = useState('phone'); // 'phone' or 'full'
   const [currentTime, setCurrentTime] = useState('9:41');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const updateClock = () => {
@@ -156,7 +158,7 @@ const AppContent = () => {
 
         {/* Scrollable Mobile Screen Content */}
         <div className="phone-screen-content">
-          <TopBar />
+          <TopBar onOpenMenu={() => setIsSidebarOpen(true)} />
           <OfflineBanner />
 
           <main style={{ padding: '0.85rem', flex: 1 }}>
@@ -164,13 +166,16 @@ const AppContent = () => {
             {renderActiveView()}
           </main>
 
-          {/* Mobile Bottom Navigation Bar */}
-          <BottomNav />
+          {/* Un-cluttered Bottom Navigation Bar with Sidebar Trigger */}
+          <BottomNav onOpenMenu={() => setIsSidebarOpen(true)} />
         </div>
 
         {/* iPhone Home Bar Indicator (Only in Phone Frame mode) */}
         {viewMode === 'phone' && <div className="phone-home-indicator" />}
       </div>
+
+      {/* Navigation Sidebar Drawer */}
+      <SidebarNav isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
       {/* Modals */}
       <ManualLoggingModal />

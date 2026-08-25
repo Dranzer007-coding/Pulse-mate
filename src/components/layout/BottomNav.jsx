@@ -1,22 +1,17 @@
 import React from 'react';
 import { useHealthData } from '../../context/HealthDataContext';
-import { Home, Activity, BrainCircuit, CloudLightning, ShieldAlert, HeartPulse, Cpu, User } from 'lucide-react';
+import { Home, Activity, BrainCircuit, ShieldAlert, Menu } from 'lucide-react';
 
-export const BottomNav = () => {
-  const { activeTab, setActiveTab, anomalies, environmentData } = useHealthData();
+export const BottomNav = ({ onOpenMenu }) => {
+  const { activeTab, setActiveTab, anomalies } = useHealthData();
 
   const isEmergencyActive = anomalies.some(a => a.severity === 'Urgent');
-  const isDisasterActive = environmentData.disasterModeActive;
 
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
-    { id: 'health', label: 'Health', icon: Activity },
+    { id: 'health', label: 'Vitals', icon: Activity },
     { id: 'insights', label: 'AI Watch', icon: BrainCircuit, badge: anomalies.length },
-    { id: 'disaster', label: 'Disaster', icon: CloudLightning, alert: isDisasterActive },
-    { id: 'emergency', label: 'SOS', icon: ShieldAlert, alert: isEmergencyActive },
-    { id: 'lifestyle', label: 'Lifestyle', icon: HeartPulse },
-    { id: 'devices', label: 'Devices', icon: Cpu },
-    { id: 'profile', label: 'Profile', icon: User }
+    { id: 'emergency', label: 'SOS', icon: ShieldAlert, alert: isEmergencyActive, urgent: true }
   ];
 
   return (
@@ -26,9 +21,9 @@ export const BottomNav = () => {
       width: '100%',
       background: 'rgba(15, 23, 42, 0.95)',
       backdropFilter: 'blur(16px)',
-      borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+      borderTop: '1px solid rgba(0, 242, 254, 0.2)',
       zIndex: 50,
-      padding: '0.5rem 0.3rem 0.8rem',
+      padding: '0.45rem 0.5rem 0.75rem',
       display: 'flex',
       justifyContent: 'space-around',
       alignItems: 'center'
@@ -48,7 +43,7 @@ export const BottomNav = () => {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.15rem',
-              color: isActive ? '#00f2fe' : 'var(--text-muted)',
+              color: isActive ? '#00f2fe' : item.urgent ? '#f87171' : 'var(--text-muted)',
               cursor: 'pointer',
               flex: 1,
               position: 'relative',
@@ -57,7 +52,7 @@ export const BottomNav = () => {
             }}
           >
             <div style={{ position: 'relative' }}>
-              <Icon size={20} color={isActive ? '#00f2fe' : 'var(--text-muted)'} strokeWidth={isActive ? 2.5 : 1.8} />
+              <Icon size={20} color={isActive ? '#00f2fe' : item.urgent ? '#ef4444' : 'var(--text-muted)'} strokeWidth={isActive ? 2.5 : 1.8} />
               {item.alert && (
                 <span style={{
                   position: 'absolute',
@@ -72,7 +67,7 @@ export const BottomNav = () => {
               )}
             </div>
             <span style={{
-              fontSize: '0.65rem',
+              fontSize: '0.68rem',
               fontWeight: isActive ? 700 : 500,
               fontFamily: 'var(--font-heading)',
               lineHeight: 1
@@ -93,6 +88,40 @@ export const BottomNav = () => {
           </button>
         );
       })}
+
+      {/* Menu Trigger to Open Complete Sidebar Drawer */}
+      <button
+        onClick={onOpenMenu}
+        style={{
+          background: 'none',
+          border: 'none',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.15rem',
+          color: 'var(--text-secondary)',
+          cursor: 'pointer',
+          flex: 1,
+          padding: '0.2rem 0'
+        }}
+      >
+        <div style={{
+          width: '24px',
+          height: '24px',
+          borderRadius: '8px',
+          background: 'rgba(0, 242, 254, 0.12)',
+          border: '1px solid rgba(0, 242, 254, 0.3)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <Menu size={15} color="#00f2fe" />
+        </div>
+        <span style={{ fontSize: '0.68rem', fontWeight: 600, fontFamily: 'var(--font-heading)' }}>
+          Sidebar
+        </span>
+      </button>
     </nav>
   );
 };
